@@ -1,12 +1,16 @@
 import { Inter } from "@next/font/google";
 import { Box } from "@chakra-ui/react";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <Box bg="tomato" w="20%" p={4} color="white">
+      <Head>
+        <title>Home</title>
+      </Head>
+      <Box bg="tomato" w="100%" p={4} color="white">
         DashBoard
       </Box>
     </>
