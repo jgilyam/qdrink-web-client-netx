@@ -1,21 +1,25 @@
-import { Box, GridItem, Flex } from "@chakra-ui/react";
-import { ReactNode } from "react";
+import Head from "next/head";
+import { Box } from "@mui/material";
+import { FC, ReactNode } from "react";
 import SideNav from "./sidenav/SideNav";
+import { NavBar, Sidebar } from "../ui";
 
 interface Props {
-  children?: ReactNode;
+  title?: string;
+  children: ReactNode;
 }
 
-export default function Layout({ children }: Props) {
+export const Layout: FC<Props> = ({ title = "Qdrink", children }) => {
   return (
-    <>
-      <Box h="7.5vh">header</Box>
-      <Flex w="100vw" bg="#191F22">
-        <SideNav></SideNav>
-        <Box w="80vw" bg="#75777A">
-          <main>{children}</main>
-        </Box>
-      </Flex>
-    </>
+    <Box sx={{ flexFlow: 1 }}>
+      <Head>
+        <title>{title}</title>
+      </Head>
+
+      <NavBar />
+      <Sidebar />
+
+      <Box sx={{ padding: "10px 20px" }}>{children}</Box>
+    </Box>
   );
-}
+};
