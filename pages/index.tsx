@@ -1,19 +1,8 @@
-import { Inter } from "@next/font/google";
-import Head from "next/head";
-
-import { Typography } from "@mui/material";
+import Box from "@mui/material/Box";
 import { Layout } from "../components/layouts";
-const inter = Inter({ subsets: ["latin"] });
+import { ReactElement } from "react";
+import { AppProps } from "next/app";
 
 export default function HomePage() {
-  return (
-    <>
-      <Head>
-        <title>Home</title>
-      </Head>
-      <Layout>
-        <Typography>Hola Hola</Typography>
-      </Layout>
-    </>
-  );
+  return <Box sx={{ bgcolor: "red" }}>home</Box>;
 }

@@ -1,11 +1,4 @@
-import {
-  Box,
-  Drawer,
-  Typography,
-  List,
-  SvgIconTypeMap,
-  SvgIcon,
-} from "@mui/material";
+import { Box, Drawer, Typography, List } from "@mui/material";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SportsBarOutlinedIcon from "@mui/icons-material/SportsBarOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -14,8 +7,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { ReactNode } from "react";
+import Link from "next/link";
+import { type } from "os";
+import { SidebarItem } from "./SidebarItem";
+import Divider from "@mui/material/Divider";
 
-interface LinkItemProps {
+export interface LinkItem {
   name: string;
   icon: any;
   path: string;
@@ -24,14 +21,15 @@ interface User {
   name: string;
   rol: string;
 }
-const linkItems: Array<LinkItemProps> = [
+const linkItems: Array<LinkItem> = [
   { name: "Home", icon: <HomeOutlinedIcon />, path: "/" },
   { name: "Clientes", icon: <AccountCircleOutlinedIcon />, path: "/clients" },
   { name: "Bebidas", icon: <SportsBarOutlinedIcon />, path: "/drinks" },
 ];
-const drawerWidth = 240;
-
-export const Sidebar = () => {
+type SidebarProps = {
+  drawerWidth: number;
+};
+export const Sidebar = ({ drawerWidth }: SidebarProps) => {
   return (
     <Drawer
       sx={{
@@ -44,22 +42,22 @@ export const Sidebar = () => {
       }}
       anchor="left"
       variant="permanent"
-      open={true}
-      onClose={() => {
-        console.log("cerrando");
-      }}
     >
-      <Box sx={{ width: 300 }}>
-        <Box sx={{ padding: "5px 10px" }}>
-          <Typography variant="h5">Dashboard</Typography>
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ padding: "5px 10px", marginBottom: "50 px" }}>
+          <Typography variant="h4">Qdrink</Typography>
         </Box>
+
+        <Divider />
 
         <List>
           {linkItems.map((link) => (
-            <ListItem key={link.name}>
-              <ListItemIcon>{link.icon}</ListItemIcon>
-              <ListItemText>{link.name}</ListItemText>
-            </ListItem>
+            <SidebarItem
+              key={link.name}
+              name={link.name}
+              icon={link.icon}
+              path={link.path}
+            />
           ))}
         </List>
       </Box>

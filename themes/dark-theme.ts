@@ -8,10 +8,10 @@ export const darkTheme = createTheme({
       default: grey[300],
     },
     primary: {
-      main: "#4a148c",
+      main: "#ff6f00",
     },
     secondary: {
-      main: "#19857b",
+      main: "#2196f3",
     },
     error: {
       main: red.A400,

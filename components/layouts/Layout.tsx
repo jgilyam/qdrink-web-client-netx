@@ -1,25 +1,31 @@
 import Head from "next/head";
-import { Box } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
 import { FC, ReactNode } from "react";
-import SideNav from "./sidenav/SideNav";
 import { NavBar, Sidebar } from "../ui";
 
 interface Props {
   title?: string;
   children: ReactNode;
 }
+const drawerWidth = 270;
 
 export const Layout: FC<Props> = ({ title = "Qdrink", children }) => {
   return (
-    <Box sx={{ flexFlow: 1 }}>
+    <Box sx={{ display: "flex" }}>
       <Head>
         <title>{title}</title>
       </Head>
 
-      <NavBar />
-      <Sidebar />
+      {/*<NavBar drawerWidth={drawerWidth} />*/}
+      <Sidebar drawerWidth={drawerWidth} />
 
-      <Box sx={{ padding: "10px 20px" }}>{children}</Box>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+      >
+        {/*<Toolbar />*/}
+        {children}
+      </Box>
     </Box>
   );
 };
