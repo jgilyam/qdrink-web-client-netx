@@ -1,38 +1,31 @@
-import { Grid, GridItem } from "@chakra-ui/react";
-import { ReactNode } from "react";
-import SideNav from "./sidenav/SideNav";
+import Head from "next/head";
+import { Box, Toolbar } from "@mui/material";
+import { FC, ReactNode } from "react";
+import { NavBar, Sidebar } from "../ui";
 
 interface Props {
-  children?: ReactNode;
+  title?: string;
+  children: ReactNode;
 }
+const drawerWidth = 270;
 
-export default function Layout({ children }: Props) {
+export const Layout: FC<Props> = ({ title = "Qdrink", children }) => {
   return (
-    <>
-      <Grid
-        templateAreas={`"nav header"
-                  "nav main"
-                  "nav footer"`}
-        gridTemplateRows={"50px 1fr 30px"}
-        gridTemplateColumns={"300px 1fr"}
-        h="100vh"
-        gap="1"
-        color="blackAlpha.700"
-        fontWeight="bold"
+    <Box sx={{ display: "flex" }}>
+      <Head>
+        <title>{title}</title>
+      </Head>
+
+      {/*<NavBar drawerWidth={drawerWidth} />*/}
+      <Sidebar drawerWidth={drawerWidth} />
+
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
-        <GridItem pl="2" bg="brand.200" area={"header"}>
-          Header
-        </GridItem>
-        <GridItem pl="2" bg="pink.300" area={"nav"}>
-          <SideNav />
-        </GridItem>
-        <GridItem pl="2" bg="green.300" area={"main"}>
-          <main>{children}</main>
-        </GridItem>
-        <GridItem pl="2" bg="blue.300" area={"footer"}>
-          Footer
-        </GridItem>
-      </Grid>
-    </>
+        {/*<Toolbar />*/}
+        {children}
+      </Box>
+    </Box>
   );
-}
+};

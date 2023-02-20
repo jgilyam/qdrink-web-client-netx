@@ -1,11 +1,5 @@
-import { Box, Button } from "@chakra-ui/react";
+import Box from "@mui/material/Box";
 
-export default function Clients() {
-  return (
-    <>
-      <Box bg="tomato" w="20%" h="100%" p={4} color="white">
-        <Button colorScheme="red">Button</Button>
-      </Box>
-    </>
-  );
+export default function DrinksPage() {
+  return <Box sx={{ bgcolor: "red" }}>drinks</Box>;
 }

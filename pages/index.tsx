@@ -1,14 +1,8 @@
-import { Inter } from "@next/font/google";
-import { Box } from "@chakra-ui/react";
+import Box from "@mui/material/Box";
+import { Layout } from "../components/layouts";
+import { ReactElement } from "react";
+import { AppProps } from "next/app";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
-  return (
-    <>
-      <Box bg="tomato" w="20%" p={4} color="white">
-        DashBoard
-      </Box>
-    </>
-  );
+export default function HomePage() {
+  return <Box sx={{ bgcolor: "red" }}>home</Box>;
 }

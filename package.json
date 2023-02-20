@@ -9,10 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.15",
-    "@chakra-ui/react": "^2.4.4",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.9",
+    "@mui/material": "^5.11.9",
     "@next/font": "13.1.1",
     "@types/node": "18.11.17",
     "@types/react": "18.0.26",
