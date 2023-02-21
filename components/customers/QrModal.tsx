@@ -1,13 +1,27 @@
-import React from "react";
+import { useState } from "react";
 
 import QrCodeIcon from '@mui/icons-material/QrCode';
 import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
 
-export default function QrModal() {
+type User = {
+    nombre: string;
+    apellido: string;
+    dni: string;
+    mail: string;
+    cel: string;
+    pais: string;
+    provincia: string;
+    dinero: string;
+    nacimiento: string;
+  }
 
-    const [openQr, setOpenQr] = React.useState(false);
+export default function QrModal(usuario: User) {
+
+    const [openQr, setOpenQr] = useState(false);
     const handleOpenQr = () => setOpenQr(true);
     const handleCloseQr = () => setOpenQr(false);
+
+    const { nombre , apellido, cel } = usuario;
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -34,10 +48,10 @@ export default function QrModal() {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal QR
+                        Enviar código QR a {nombre + " " + apellido}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        Su N° de celular es {cel}.
                     </Typography>
                 </Box>
             </Modal>

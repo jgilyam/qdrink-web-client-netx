@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 
 
 import React from "react";
-import { Grid } from "@mui/material";
+import { Stack } from "@mui/material";
 import DeleteModal from "../components/customers/DeleteModal";
 import QrModal from "../components/customers/QrModal";
 import EditModal from "../components/customers/EditModal";
@@ -29,7 +29,7 @@ const style = {
   p: 4,
 };
 
-interface User {
+type User = {
   nombre: string;
   apellido: string;
   dni: string;
@@ -73,7 +73,7 @@ export default function ClientsPage() {
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
-            <TableRow>
+            <TableRow sx={{ bgcolor: "gray" }}>
               <TableCell>Nombre y Apellido</TableCell>
               <TableCell>DNI</TableCell>
               <TableCell>Email</TableCell>
@@ -84,27 +84,22 @@ export default function ClientsPage() {
           <TableBody>
             {users.map((user) => (
               <TableRow
+                hover={true}
                 key={user.mail}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell>{user.nombre + " " + user.apellido}</TableCell>
+                <TableCell component="th" scope="row">{user.nombre + " " + user.apellido}</TableCell>
                 <TableCell>{user.dni}</TableCell>
                 <TableCell>{user.mail}</TableCell>
                 <TableCell>{user.dinero}</TableCell>
                 <TableCell>
-                  <Grid
-                    container
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center">
-
-                    <DeleteModal></DeleteModal>
-                    <QrModal></QrModal>
+                  <Stack direction="row" justifyContent="center" alignItems="center">
+                    <QrModal {...user}></QrModal>
+                    <AddMoneyModal {...user}></AddMoneyModal>
+                    <ViewModal {...user}></ViewModal>
                     <EditModal></EditModal>
-                    <ViewModal></ViewModal>
-                    <AddMoneyModal></AddMoneyModal>
-
-                  </Grid>
+                    <DeleteModal></DeleteModal>
+                  </Stack>
                 </TableCell>
               </TableRow>
             ))}

@@ -1,9 +1,21 @@
 import React from "react";
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
+import { Box, Tooltip, Button, Modal, Typography, TextField } from "@mui/material";
 
-export default function ViewModal() {
+type User = {
+    nombre: string;
+    apellido: string;
+    dni: string;
+    mail: string;
+    cel: string;
+    pais: string;
+    provincia: string;
+    dinero: string;
+    nacimiento: string;
+}
+
+export default function ViewModal(usuario: User) {
 
     const [openView, setOpenView] = React.useState(false);
     const handleOpenView = () => setOpenView(true);
@@ -21,6 +33,8 @@ export default function ViewModal() {
         p: 4,
     };
 
+    const { nombre , apellido, dni, mail, cel, pais, provincia, dinero, nacimiento } = usuario;
+
     return (
         <div>
             <Tooltip title="Ver" arrow>
@@ -32,13 +46,82 @@ export default function ViewModal() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box component="form" sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal Ver
+                        Datos completos del usuario
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography>
+                    <TextField
+                        id="Nombre"
+                        label="Nombre"
+                        value={nombre}
+                        InputProps={{
+                            readOnly: true,
+                          }}
+                    />
+                     <TextField
+                        id="Apellido"
+                        label="Apellido"
+                        value={apellido}
+                        InputProps={{
+                            readOnly: true,
+                          }}
+                    />
+                     <TextField
+                        id="DNI"
+                        label="DNI"
+                        value={dni}
+                        InputProps={{
+                            readOnly: true,
+                          }}
+                    />
+                    <TextField
+                        id="FechaNacimiento"
+                        label="Fecha de nacimiento"
+                        value={nacimiento}
+                        InputProps={{
+                            readOnly: true,
+                          }}
+                    />
+                    <TextField
+                        id="Pais"
+                        label="Pais"
+                        value={pais}
+                        InputProps={{
+                            readOnly: true,
+                          }}
+                    />
+                    <TextField
+                        id="Provincia"
+                        label="Provincia"
+                        value={provincia}
+                        InputProps={{
+                            readOnly: true,
+                          }}
+                    />
+                    <TextField
+                        id="Celular"
+                        label="Celular"
+                        value={cel}
+                        InputProps={{
+                            readOnly: true,
+                          }}
+                    />
+                    <TextField
+                        id="Email"
+                        label="Email"
+                        value={mail}
+                        InputProps={{
+                            readOnly: true,
+                          }}
+                    />
+                     <TextField
+                        id="Dinero"
+                        label="Dinero"
+                        value={dinero}
+                        InputProps={{
+                            readOnly: true,
+                          }}
+                    />
                 </Box>
             </Modal>
         </div>

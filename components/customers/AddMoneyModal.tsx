@@ -3,11 +3,25 @@ import React from "react";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
 
-export default function AddMoneyModal() {
+type User = {
+    nombre: string;
+    apellido: string;
+    dni: string;
+    mail: string;
+    cel: string;
+    pais: string;
+    provincia: string;
+    dinero: string;
+    nacimiento: string;
+  }
+
+export default function AddMoneyModal(usuario: User) {
 
     const [openMoney, setOpenMoney] = React.useState(false);
     const handleOpenMoney = () => setOpenMoney(true);
     const handleCloseMoney = () => setOpenMoney(false);
+
+    const { nombre , apellido, dinero } = usuario;
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -34,10 +48,10 @@ export default function AddMoneyModal() {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal dinero
+                        ¿Desea agregar dinero a {nombre + " " + apellido}?
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        Su saldo actual es de ${dinero}.
                     </Typography>
                 </Box>
             </Modal>
