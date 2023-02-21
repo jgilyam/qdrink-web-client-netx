@@ -8,10 +8,10 @@ export const darkTheme = createTheme({
       default: grey[300],
     },
     primary: {
-      main: "#ff6f00",
+      main: "#4a148c",
     },
     secondary: {
-      main: "#2196f3",
+      main: "#19857b",
     },
     error: {
       main: red.A400,
@@ -26,5 +26,10 @@ export const darkTheme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      defaultProps: { size: "small", variant: "filled" },
+      styleOverrides: {},
+    },
   },
 });
+
