@@ -2,18 +2,8 @@ import { useState } from "react";
 
 import QrCodeIcon from '@mui/icons-material/QrCode';
 import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
+import { User } from "../../interfaces/interfaces";
 
-type User = {
-    nombre: string;
-    apellido: string;
-    dni: string;
-    mail: string;
-    cel: string;
-    pais: string;
-    provincia: string;
-    dinero: string;
-    nacimiento: string;
-  }
 
 export default function QrModal(usuario: User) {
 

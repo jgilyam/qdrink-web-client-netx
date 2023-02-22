@@ -16,30 +16,8 @@ import QrModal from "../components/customers/QrModal";
 import EditModal from "../components/customers/EditModal";
 import ViewModal from "../components/customers/ViewModal";
 import AddMoneyModal from "../components/customers/AddMoneyModal";
+import { User } from "../interfaces/interfaces";
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-type User = {
-  nombre: string;
-  apellido: string;
-  dni: string;
-  mail: string;
-  cel: string;
-  pais: string;
-  provincia: string;
-  dinero: string;
-  nacimiento: string;
-}
 
 const users: User[] = [
   {
@@ -97,7 +75,7 @@ export default function ClientsPage() {
                     <QrModal {...user}></QrModal>
                     <AddMoneyModal {...user}></AddMoneyModal>
                     <ViewModal {...user}></ViewModal>
-                    <EditModal></EditModal>
+                    <EditModal {...user}></EditModal>
                     <DeleteModal></DeleteModal>
                   </Stack>
                 </TableCell>

@@ -2,18 +2,8 @@ import React from "react";
 
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
+import { User } from "../../interfaces/interfaces";
 
-type User = {
-    nombre: string;
-    apellido: string;
-    dni: string;
-    mail: string;
-    cel: string;
-    pais: string;
-    provincia: string;
-    dinero: string;
-    nacimiento: string;
-  }
 
 export default function AddMoneyModal(usuario: User) {
 
