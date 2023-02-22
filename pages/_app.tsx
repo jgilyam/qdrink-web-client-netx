@@ -8,7 +8,7 @@ import { Layout } from "../components/layouts";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={ligthTheme}>
+    <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Layout>
         <Component {...pageProps} />
