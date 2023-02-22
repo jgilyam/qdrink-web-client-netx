@@ -5,13 +5,7 @@ export const darkTheme = createTheme({
   palette: {
     mode: "dark",
     background: {
-      default: grey[300],
-    },
-    primary: {
-      main: "#ff6f00",
-    },
-    secondary: {
-      main: "#2196f3",
+      default: grey[600],
     },
     error: {
       main: red.A400,
@@ -26,5 +20,10 @@ export const darkTheme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      defaultProps: { size: "small", variant: "filled" },
+      styleOverrides: {},
+    },
   },
 });
+

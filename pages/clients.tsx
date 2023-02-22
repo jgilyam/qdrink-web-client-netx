@@ -1,4 +1,14 @@
-import Box from "@mui/material/Box";
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Box,
+} from "@mui/material";
+import { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import { AddCustomerForm } from "../components/customers/AddCustomerForm";
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -43,10 +53,38 @@ const users: User[] = [
     nacimiento: "27/01/1992",
   }];
 
+
+
+
+
+
+
+
 export default function ClientsPage() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
-    <>
+    <> 
+    <Button
+        color="primary"
+        variant="contained"
+        startIcon={<AddIcon />}
+        onClick={handleOpen}
+      >
+        Agregar usuario
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Agregar nuevo usuario</DialogTitle>
+        <DialogContent>
+          <AddCustomerForm />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancelar</Button>
+          <Button onClick={handleClose}>Guardar</Button>
+        </DialogActions>
+      </Dialog>
       <Box sx={{ bgcolor: "red" }}>clients</Box>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -84,7 +122,9 @@ export default function ClientsPage() {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
-  );
+
+      </>
+      );
+  
 }
 
