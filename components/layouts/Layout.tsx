@@ -19,10 +19,7 @@ export const Layout: FC<Props> = ({ title = "Qdrink", children }) => {
       {/*<NavBar drawerWidth={drawerWidth} />*/}
       <Sidebar drawerWidth={drawerWidth} />
 
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-      >
+      <Box component="main" sx={{ p: 3 }}>
         {/*<Toolbar />*/}
         {children}
       </Box>
