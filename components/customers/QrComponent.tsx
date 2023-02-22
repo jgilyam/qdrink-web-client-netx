@@ -1,17 +1,17 @@
-import React from "react";
+import { useState } from "react";
 
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import QrCodeIcon from '@mui/icons-material/QrCode';
 import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
 import { User } from "../../interfaces/interfaces";
 
 
-export default function AddMoneyModal(usuario: User) {
+export default function QrComponent(usuario: User) {
 
-    const [openMoney, setOpenMoney] = React.useState(false);
-    const handleOpenMoney = () => setOpenMoney(true);
-    const handleCloseMoney = () => setOpenMoney(false);
+    const [openQr, setOpenQr] = useState(false);
+    const handleOpenQr = () => setOpenQr(true);
+    const handleCloseQr = () => setOpenQr(false);
 
-    const { nombre , apellido, dinero } = usuario;
+    const { nombre , apellido, cel } = usuario;
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -27,21 +27,21 @@ export default function AddMoneyModal(usuario: User) {
 
     return (
         <div>
-            <Tooltip title="Agregar dinero" arrow>
-                <Button onClick={handleOpenMoney}><AttachMoneyIcon /></Button>
+            <Tooltip title="Enviar QR" arrow>
+                <Button onClick={handleOpenQr}><QrCodeIcon /></Button>
             </Tooltip>
             <Modal
-                open={openMoney}
-                onClose={handleCloseMoney}
+                open={openQr}
+                onClose={handleCloseQr}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        ¿Desea agregar dinero a {nombre + " " + apellido}?
+                        Enviar código QR a {nombre + " " + apellido}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Su saldo actual es de ${dinero}.
+                        Su N° de celular es {cel}.
                     </Typography>
                 </Box>
             </Modal>

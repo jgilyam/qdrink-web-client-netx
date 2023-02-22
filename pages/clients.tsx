@@ -11,11 +11,11 @@ import Paper from '@mui/material/Paper';
 
 import React from "react";
 import { Stack } from "@mui/material";
-import DeleteModal from "../components/customers/DeleteModal";
-import QrModal from "../components/customers/QrModal";
-import EditModal from "../components/customers/EditModal";
-import ViewModal from "../components/customers/ViewModal";
-import AddMoneyModal from "../components/customers/AddMoneyModal";
+import DeleteModal from "../components/customers/DeleteComponent";
+import QrModal from "../components/customers/QrComponent";
+import EditModal from "../components/customers/EditComponent";
+import ViewModal from "../components/customers/ViewComponent";
+import AddMoneyModal from "../components/customers/AddMoneyComponent";
 import { User } from "../interfaces/interfaces";
 
 

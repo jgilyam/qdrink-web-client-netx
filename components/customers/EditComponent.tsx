@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditIcon from '@mui/icons-material/Edit';
 import { Box, Tooltip, Button, Modal, Typography, TextField } from "@mui/material";
 import { User } from "../../interfaces/interfaces";
 
-export default function ViewModal(usuario: User) {
+export default function EditComponent(usuario: User) {
 
-    const [openView, setOpenView] = React.useState(false);
-    const handleOpenView = () => setOpenView(true);
-    const handleCloseView = () => setOpenView(false);
+    const [formulario, setFormulario] = React.useState<User>({
+        nombre: usuario.nombre,
+        apellido: usuario.apellido,
+        dni: usuario.dni,
+        mail: usuario.mail,
+        cel: usuario.cel,
+        pais: usuario.pais,
+        provincia: usuario.provincia,
+        dinero: usuario.dinero,
+        nacimiento: usuario.nacimiento
+    });
+
+    const handleFormEdit = ( { target } : React.ChangeEvent<HTMLInputElement> ) =>{
+        const {name , value} = target;
+        setFormulario({...formulario , [name]: value});
+    }
+
+
+    const [openEdit, setOpenEdit] = useState(false);
+    const handleOpenEdit = () => setOpenEdit(true);
+    const handleCloseEdit = () => setOpenEdit(false);
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -23,96 +41,80 @@ export default function ViewModal(usuario: User) {
         p: 4,
     };
 
-
-    const { nombre , apellido, dni, mail, cel, pais, provincia, dinero, nacimiento } = usuario;
+    const { nombre , apellido, dni, mail, cel, pais, provincia, dinero, nacimiento } = formulario;
 
     return (
         <div>
-            <Tooltip title="Ver" arrow>
-                <Button onClick={handleOpenView}><VisibilityIcon /></Button>
+            <Tooltip title="Editar" arrow>
+                <Button onClick={handleOpenEdit}><EditIcon /></Button>
             </Tooltip>
             <Modal
-                open={openView}
-                onClose={handleCloseView}
+                open={openEdit}
+                onClose={handleCloseEdit}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                 <Box component="form" sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2" color="#FF5F00" mb={3} fontWeight="bold">
-                        Datos completos del usuario
+                        Editar usuario
                     </Typography>
                     <TextField
                         id="Nombre"
                         label="Nombre"
+                        name="nombre"
                         value={nombre}
-                        InputProps={{
-                            readOnly: true,
-                          }}
+                        onChange={handleFormEdit}
                     />
-                     <TextField
+                    <TextField
                         id="Apellido"
                         label="Apellido"
+                        name="apellido"
                         value={apellido}
-                        InputProps={{
-                            readOnly: true,
-                          }}
+                        onChange={handleFormEdit}
                     />
-                     <TextField
+                    <TextField
                         id="DNI"
                         label="DNI"
+                        name="dni"
                         value={dni}
-                        InputProps={{
-                            readOnly: true,
-                          }}
+                        onChange={handleFormEdit}
                     />
                     <TextField
                         id="FechaNacimiento"
                         label="Fecha de nacimiento"
+                        name="nacimiento"
                         value={nacimiento}
-                        InputProps={{
-                            readOnly: true,
-                          }}
+                        onChange={handleFormEdit}
                     />
                     <TextField
                         id="Pais"
                         label="Pais"
+                        name="pais"
                         value={pais}
-                        InputProps={{
-                            readOnly: true,
-                          }}
+                        onChange={handleFormEdit}
                     />
                     <TextField
                         id="Provincia"
                         label="Provincia"
+                        name="provincia"
                         value={provincia}
-                        InputProps={{
-                            readOnly: true,
-                          }}
+                        onChange={handleFormEdit}
                     />
                     <TextField
                         id="Celular"
                         label="Celular"
+                        name="cel"
                         value={cel}
-                        InputProps={{
-                            readOnly: true,
-                          }}
+                        onChange={handleFormEdit}
                     />
                     <TextField
                         id="Email"
                         label="Email"
+                        name="mail"
                         value={mail}
-                        InputProps={{
-                            readOnly: true,
-                          }}
+                        onChange={handleFormEdit}
                     />
-                     <TextField
-                        id="Dinero"
-                        label="Dinero"
-                        value={`$ ${dinero}`}
-                        InputProps={{
-                            readOnly: true,
-                          }}
-                    />
+                    <Button type="submit" variant="contained">Editar</Button>
                 </Box>
             </Modal>
         </div>

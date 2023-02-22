@@ -1,13 +1,17 @@
 import React from "react";
 
-import DeleteIcon from '@mui/icons-material/Delete';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
+import { User } from "../../interfaces/interfaces";
 
-export default function DeleteModal() {
 
-    const [openDelete, setOpenDelete] = React.useState(false);
-    const handleOpenDelete = () => setOpenDelete(true);
-    const handleCloseDelete = () => setOpenDelete(false);
+export default function AddMoneyComponent(usuario: User) {
+
+    const [openMoney, setOpenMoney] = React.useState(false);
+    const handleOpenMoney = () => setOpenMoney(true);
+    const handleCloseMoney = () => setOpenMoney(false);
+
+    const { nombre , apellido, dinero } = usuario;
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -23,21 +27,21 @@ export default function DeleteModal() {
 
     return (
         <div>
-            <Tooltip title="Eliminar" arrow>
-                <Button onClick={handleOpenDelete}><DeleteIcon /></Button>
+            <Tooltip title="Agregar dinero" arrow>
+                <Button onClick={handleOpenMoney}><AttachMoneyIcon /></Button>
             </Tooltip>
             <Modal
-                open={openDelete}
-                onClose={handleCloseDelete}
+                open={openMoney}
+                onClose={handleCloseMoney}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal eliminar
+                        ¿Desea agregar dinero a {nombre + " " + apellido}?
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        Su saldo actual es de ${dinero}.
                     </Typography>
                 </Box>
             </Modal>

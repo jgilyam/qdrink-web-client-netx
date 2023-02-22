@@ -1,2 +1,2 @@
-export * from "./DeleteModal"
-export * from "./QrModal";
+export * from "./DeleteComponent"
+export * from "./QrComponent";
