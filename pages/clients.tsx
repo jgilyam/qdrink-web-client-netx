@@ -10,14 +10,13 @@ import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { AddCustomerForm } from "../components/customers/AddCustomerForm";
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 import React from "react";
 import { Stack } from "@mui/material";
@@ -27,7 +26,6 @@ import EditModal from "../components/customers/EditComponent";
 import ViewModal from "../components/customers/ViewComponent";
 import AddMoneyModal from "../components/customers/AddMoneyComponent";
 import { User } from "../interfaces/interfaces";
-
 
 const users: User[] = [
   {
@@ -51,14 +49,8 @@ const users: User[] = [
     provincia: "San Juan",
     dinero: "200",
     nacimiento: "27/01/1992",
-  }];
-
-
-
-
-
-
-
+  },
+];
 
 export default function ClientsPage() {
   const [open, setOpen] = useState(false);
@@ -66,8 +58,8 @@ export default function ClientsPage() {
   const handleClose = () => setOpen(false);
 
   return (
-    <> 
-    <Button
+    <>
+      <Button
         color="primary"
         variant="contained"
         startIcon={<AddIcon />}
@@ -102,14 +94,20 @@ export default function ClientsPage() {
               <TableRow
                 hover={true}
                 key={user.mail}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row">{user.nombre + " " + user.apellido}</TableCell>
+                <TableCell component="th" scope="row">
+                  {user.nombre + " " + user.apellido}
+                </TableCell>
                 <TableCell>{user.dni}</TableCell>
                 <TableCell>{user.mail}</TableCell>
                 <TableCell>{user.dinero}</TableCell>
                 <TableCell>
-                  <Stack direction="row" justifyContent="center" alignItems="center">
+                  <Stack
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
                     <QrModal {...user}></QrModal>
                     <AddMoneyModal {...user}></AddMoneyModal>
                     <ViewModal {...user}></ViewModal>
@@ -122,9 +120,6 @@ export default function ClientsPage() {
           </TableBody>
         </Table>
       </TableContainer>
-
-      </>
-      );
-  
+    </>
+  );
 }
-
