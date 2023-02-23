@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Button,
   Dialog,
@@ -5,26 +7,25 @@ import {
   DialogContent,
   DialogActions,
   Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Stack,
+  Paper
 } from "@mui/material";
-import { useState } from "react";
+
 import AddIcon from "@mui/icons-material/Add";
+
 import { AddCustomerForm } from "../components/customers/AddCustomerForm";
+import DeleteComponent from "../components/customers/DeleteComponent";
+import QrComponent from "../components/customers/QrComponent";
+import EditComponent from "../components/customers/EditComponent";
+import ViewComponent from "../components/customers/ViewComponent";
+import AddMoneyComponent from "../components/customers/AddMoneyComponent";
 
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-
-import React from "react";
-import { Stack } from "@mui/material";
-import DeleteModal from "../components/customers/DeleteComponent";
-import QrModal from "../components/customers/QrComponent";
-import EditModal from "../components/customers/EditComponent";
-import ViewModal from "../components/customers/ViewComponent";
-import AddMoneyModal from "../components/customers/AddMoneyComponent";
 import { User } from "../interfaces/interfaces";
 
 const users: User[] = [
@@ -53,6 +54,7 @@ const users: User[] = [
 ];
 
 export default function ClientsPage() {
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -77,15 +79,14 @@ export default function ClientsPage() {
           <Button onClick={handleClose}>Guardar</Button>
         </DialogActions>
       </Dialog>
-      <Box sx={{ bgcolor: "red" }}>clients</Box>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow sx={{ bgcolor: "gray" }}>
               <TableCell>Nombre y Apellido</TableCell>
-              <TableCell>DNI</TableCell>
+              <TableCell>Celular</TableCell>
               <TableCell>Email</TableCell>
-              <TableCell>Dinero</TableCell>
+              <TableCell>Saldo</TableCell>
               <TableCell align="center">Acciones</TableCell>
             </TableRow>
           </TableHead>
@@ -99,7 +100,7 @@ export default function ClientsPage() {
                 <TableCell component="th" scope="row">
                   {user.nombre + " " + user.apellido}
                 </TableCell>
-                <TableCell>{user.dni}</TableCell>
+                <TableCell>{user.cel}</TableCell>
                 <TableCell>{user.mail}</TableCell>
                 <TableCell>{user.dinero}</TableCell>
                 <TableCell>
@@ -108,11 +109,11 @@ export default function ClientsPage() {
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <QrModal {...user}></QrModal>
-                    <AddMoneyModal {...user}></AddMoneyModal>
-                    <ViewModal {...user}></ViewModal>
+                    <QrComponent {...user}></QrComponent>
+                    <AddMoneyComponent {...user}></AddMoneyComponent>
+                    {/* <ViewModal {...user}></ViewModal>
                     <EditModal {...user}></EditModal>
-                    <DeleteModal></DeleteModal>
+                    <DeleteModal></DeleteModal> */}
                   </Stack>
                 </TableCell>
               </TableRow>
