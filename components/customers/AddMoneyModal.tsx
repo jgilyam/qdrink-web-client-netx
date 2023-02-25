@@ -1,17 +1,17 @@
-import { useState } from "react";
+import React from "react";
 
-import QrCodeIcon from '@mui/icons-material/QrCode';
-import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { Box, Tooltip, Modal, Typography, IconButton } from "@mui/material";
 import { User } from "../../interfaces/interfaces";
 
 
-export default function QrComponent(usuario: User) {
+export default function AddMoneyModal(usuario: User) {
 
-    const [openQr, setOpenQr] = useState(false);
-    const handleOpenQr = () => setOpenQr(true);
-    const handleCloseQr = () => setOpenQr(false);
+    const [openMoney, setOpenMoney] = React.useState(false);
+    const handleOpenMoney = () => setOpenMoney(true);
+    const handleCloseMoney = () => setOpenMoney(false);
 
-    const { nombre , apellido, cel } = usuario;
+    const { nombre , apellido, dinero } = usuario;
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -27,21 +27,21 @@ export default function QrComponent(usuario: User) {
 
     return (
         <div>
-            <Tooltip title="Enviar QR" arrow>
-                <Button onClick={handleOpenQr}><QrCodeIcon /></Button>
+            <Tooltip title="Agregar dinero" arrow>
+                <IconButton onClick={handleOpenMoney}><AttachMoneyIcon fontSize="small" color="primary" /></IconButton>
             </Tooltip>
             <Modal
-                open={openQr}
-                onClose={handleCloseQr}
+                open={openMoney}
+                onClose={handleCloseMoney}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Enviar código QR a {nombre + " " + apellido}
+                        ¿Desea agregar dinero a {nombre + " " + apellido}?
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Su N° de celular es {cel}.
+                        Su saldo actual es de ${dinero}.
                     </Typography>
                 </Box>
             </Modal>
