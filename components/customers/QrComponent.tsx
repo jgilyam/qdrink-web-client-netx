@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import QrCodeIcon from '@mui/icons-material/QrCode';
-import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
+import { Box, Tooltip, Button, Modal, Typography, IconButton } from "@mui/material";
 import { User } from "../../interfaces/interfaces";
 
 
@@ -28,7 +28,8 @@ export default function QrComponent(usuario: User) {
     return (
         <div>
             <Tooltip title="Enviar QR" arrow>
-                <Button onClick={handleOpenQr}><QrCodeIcon /></Button>
+                {/* <Button onClick={handleOpenQr}><QrCodeIcon fontSize="small" /></Button> */}
+                <IconButton><QrCodeIcon fontSize="small" color="primary" /></IconButton>
             </Tooltip>
             <Modal
                 open={openQr}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import { Box, Tooltip, Button, Modal, Typography } from "@mui/material";
+import { Box, Tooltip, Button, Modal, Typography, IconButton } from "@mui/material";
 import { User } from "../../interfaces/interfaces";
 
 
@@ -28,7 +28,8 @@ export default function AddMoneyComponent(usuario: User) {
     return (
         <div>
             <Tooltip title="Agregar dinero" arrow>
-                <Button onClick={handleOpenMoney}><AttachMoneyIcon /></Button>
+                {/* <Button onClick={handleOpenMoney}><AttachMoneyIcon fontSize="small" /></Button> */}
+                <IconButton><AttachMoneyIcon fontSize="small" color="primary" /></IconButton>
             </Tooltip>
             <Modal
                 open={openMoney}
