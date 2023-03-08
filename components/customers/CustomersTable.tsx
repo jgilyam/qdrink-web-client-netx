@@ -3,7 +3,6 @@ import { useState } from "react";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { User } from "../../interfaces/interfaces";
@@ -25,8 +24,10 @@ import {
   Menu,
   ListItemIcon,
 } from "@mui/material";
-import QrModal from "./QrModal";
-import AddMoneyModal from "./AddMoneyModal";
+import QrModal from "./SendQr";
+import AddMoneyModal from "./AddMoney";
+import EditComponent from "./EditComponent";
+import DeleteComponent from "./DeleteComponent";
 
 const users: User[] = [
   {
@@ -197,14 +198,13 @@ export default function CustomersTable() {
                 <TableRow
                   hover={true}
                   key={user.mail}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
                     {user.nombre + " " + user.apellido}
                   </TableCell>
                   <TableCell>{user.cel}</TableCell>
                   <TableCell>{user.mail}</TableCell>
-                  <TableCell>{user.dinero}</TableCell>
+                  <TableCell >$ {user.dinero}</TableCell>
                   <TableCell>
                     <Stack
                       direction="row"
@@ -233,18 +233,8 @@ export default function CustomersTable() {
                           </ListItemIcon>
                           Ver
                         </MenuItem>
-                        <MenuItem onClick={handleCloseMenu}>
-                          <ListItemIcon>
-                            <EditIcon fontSize="small" />
-                          </ListItemIcon>
-                          Editar
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseMenu}>
-                          <ListItemIcon>
-                            <DeleteIcon fontSize="small" />
-                          </ListItemIcon>
-                          Eliminar
-                        </MenuItem>
+                        <EditComponent {...user}></EditComponent>
+                        <DeleteComponent {...user}></DeleteComponent>
                       </Menu>
                     </Stack>
                   </TableCell>
