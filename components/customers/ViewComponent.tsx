@@ -31,7 +31,7 @@ export default function ViewComponent(usuario: User) {
             <Tooltip title="Ver" arrow>
                 <Button onClick={handleOpenView}><VisibilityIcon /></Button>
             </Tooltip>
-            <Modal
+            <Modal  
                 open={openView}
                 onClose={handleCloseView}
                 aria-labelledby="modal-modal-title"

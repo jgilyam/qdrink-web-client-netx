@@ -3,7 +3,6 @@ import { useState } from "react";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { User } from "../../interfaces/interfaces";
@@ -25,8 +24,10 @@ import {
   Menu,
   ListItemIcon,
 } from "@mui/material";
-import QrModal from "./QrModal";
-import AddMoneyModal from "./AddMoneyModal";
+import QrModal from "./SendQr";
+import AddMoneyModal from "./AddMoney";
+import EditComponent from "./EditComponent";
+import DeleteComponent from "./DeleteComponent";
 
 const users: User[] = [
   {
@@ -232,18 +233,8 @@ export default function CustomersTable() {
                           </ListItemIcon>
                           Ver
                         </MenuItem>
-                        <MenuItem onClick={handleCloseMenu}>
-                          <ListItemIcon>
-                            <EditIcon fontSize="small" />
-                          </ListItemIcon>
-                          Editar
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseMenu}>
-                          <ListItemIcon>
-                            <DeleteIcon fontSize="small" />
-                          </ListItemIcon>
-                          Eliminar
-                        </MenuItem>
+                        <EditComponent {...user}></EditComponent>
+                        <DeleteComponent {...user}></DeleteComponent>
                       </Menu>
                     </Stack>
                   </TableCell>
